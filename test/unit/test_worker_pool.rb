@@ -24,6 +24,21 @@ class TestWorkerPool < Test::Unit::TestCase
   end
 
   class ExampleWorker < EmWorkerPool::Worker
+    attr_reader :after_initialized
+    attr_reader :before_performed
+    attr_reader :after_performed
+
+    def after_initialize
+      @after_initialized = :after_initialized
+    end
+
+    def before_perform(block)
+      @before_performed = :before_performed
+    end
+
+    def after_perform(block)
+      @after_performed = :after_performed
+    end
   end
 
   def test_options
@@ -56,6 +71,14 @@ class TestWorkerPool < Test::Unit::TestCase
     assert_equal pool, worker.pool
     assert_equal nil, worker.block
     assert_equal [ :example ], worker.args
+
+    assert_eventually(1) do
+      worker.after_initialized
+    end
+
+    assert_equal :after_initialized, worker.after_initialized
+    assert_equal nil, worker.before_performed
+    assert_equal nil, worker.after_performed
   end
 
   def test_simple_tasks
