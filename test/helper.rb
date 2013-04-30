@@ -17,4 +17,15 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'em-threaded-queue'
 
 class Test::Unit::TestCase
+  def assert_eventually(time = nil, message = nil, &block)
+    start_time = Time.now.to_i
+
+    while (!block.call)
+      select(nil, nil, nil, 0.1)
+      
+      if (time and (Time.now.to_i - start_time > time))
+        flunk(message || 'assert_eventually timed out')
+      end
+    end
+  end
 end

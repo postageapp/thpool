@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Scott Tadman"]
-  s.date = "2013-04-29"
+  s.date = "2013-04-30"
   s.description = "Simple thread pool/worker system for EventMachine"
   s.email = "scott@twg.ca"
   s.extra_rdoc_files = [
@@ -23,12 +23,14 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "em-threaded-queue.gemspec",
     "lib/em-threaded-queue.rb",
     "lib/em_threaded_queue/pool.rb",
     "lib/em_threaded_queue/worker.rb",
     "test/helper.rb",
     "test/test_em-threaded-queue.rb",
-    "test/unit/test_threaded_queue.rb"
+    "test/unit/test_threaded_queue.rb",
+    "test/unit/test_threaded_queue_pool.rb"
   ]
   s.homepage = "http://github.com/twg/em-threaded-queue"
   s.licenses = ["MIT"]
