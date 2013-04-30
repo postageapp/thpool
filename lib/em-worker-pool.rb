@@ -1,10 +1,14 @@
 require 'thread'
 
-class EmThreadedQueue::Pool
+class EmWorkerPool
+  # == Submodules ===========================================================
+
+  autoload(:Worker, 'em_worker_pool/worker')
+
   # == Constants ============================================================
 
   OPTIONS_DEFAULT = {
-    :worker_class => EmThreadedQueue::Worker,
+    :worker_class => EmWorkerPool::Worker,
     :workers_min => 0,
     :workers_max => 20,
     :count_per_worker => 1,

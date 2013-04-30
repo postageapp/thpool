@@ -1,11 +1,11 @@
 require_relative '../helper'
 
-class TestEmThreadedQueueWorker < Test::Unit::TestCase
+class TestEmWorkerPoolWorker < Test::Unit::TestCase
   def test_defaults
-    pool = EmThreadedQueue::Pool.new
+    pool = EmWorkerPool.new
     args = %w[ test arguments ]
 
-    worker = EmThreadedQueue::Worker.new(pool, *args)
+    worker = EmWorkerPool::Worker.new(pool, *args)
 
     assert_equal pool, worker.pool
     assert_equal nil, worker.block

@@ -16,8 +16,8 @@ require 'jeweler'
 
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "em-threaded-queue"
-  gem.homepage = "http://github.com/twg/em-threaded-queue"
+  gem.name = "em-worker-pool"
+  gem.homepage = "http://github.com/twg/em-worker-pool"
   gem.license = "MIT"
   gem.summary = %Q{EventMachine Thread Pool/Worker System}
   gem.description = %Q{Simple thread pool/worker system for EventMachine}

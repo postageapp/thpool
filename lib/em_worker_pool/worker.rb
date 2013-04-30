@@ -1,4 +1,4 @@
-class EmThreadedQueue::Worker
+class EmWorkerPool::Worker
   # == Properties ===========================================================
 
   attr_reader :pool

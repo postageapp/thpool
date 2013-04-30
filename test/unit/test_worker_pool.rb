@@ -1,8 +1,8 @@
 require_relative '../helper'
 
-class TestEmThreadedQueuePool < Test::Unit::TestCase
+class TestWorkerPool < Test::Unit::TestCase
   def test_defaults
-    pool = EmThreadedQueue::Pool.new
+    pool = EmWorkerPool.new
 
     assert_equal false, pool.queue?
     assert_equal 0, pool.queue_size
@@ -14,7 +14,7 @@ class TestEmThreadedQueuePool < Test::Unit::TestCase
 
     assert_equal [ ], pool.workers
 
-    options_default = EmThreadedQueue::Pool::OPTIONS_DEFAULT
+    options_default = EmWorkerPool::OPTIONS_DEFAULT
 
     assert_equal options_default[:worker_class], pool.worker_class
     assert_equal options_default[:workers_min], pool.workers_min
@@ -23,11 +23,11 @@ class TestEmThreadedQueuePool < Test::Unit::TestCase
     assert_equal options_default[:args], pool.args
   end
 
-  class ExampleWorker < EmThreadedQueue::Worker
+  class ExampleWorker < EmWorkerPool::Worker
   end
 
   def test_options
-    pool = EmThreadedQueue::Pool.new(
+    pool = EmWorkerPool.new(
       :worker_class => ExampleWorker,
       :workers_min => 1,
       :workers_max => 5,
@@ -59,7 +59,7 @@ class TestEmThreadedQueuePool < Test::Unit::TestCase
   end
 
   def test_simple_tasks
-    pool = EmThreadedQueue::Pool.new
+    pool = EmWorkerPool.new
     count = 0
 
     100.times do
@@ -74,7 +74,7 @@ class TestEmThreadedQueuePool < Test::Unit::TestCase
   end
 
   def test_with_context
-    pool = EmThreadedQueue::Pool.new(
+    pool = EmWorkerPool.new(
       :args => [ :test, 'arguments' ]
     )
 
@@ -92,7 +92,7 @@ class TestEmThreadedQueuePool < Test::Unit::TestCase
   end
 
   def test_with_recursion
-    pool = EmThreadedQueue::Pool.new
+    pool = EmWorkerPool.new
 
     times = 100
     queued = 0
