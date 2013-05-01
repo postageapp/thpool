@@ -1,4 +1,4 @@
-# EmWorkerPool
+# Thpool
 
 This is a simple threaded pool worker system that can process tasks in the
 order they are received.
@@ -6,7 +6,7 @@ order they are received.
 ## Example
 
 ```
-pool = EmWorkerPool.new
+pool = Thpool.new
 
 pool.perform do
   # ... Action to be enqueued here
@@ -24,7 +24,7 @@ Constructor options:
   * `:workers_max` - The maximum number of workers to have running.
   * `:count_per_worker` - The ratio of tasks to workers.
 
-The default `EnWorkerPool::Worker` class should suffice for most tasks.
+The default `EnThpool::Worker` class should suffice for most tasks.
 If necessary, this can be subclassed. This would be useful if the worker
 needs to perform some kind of resource initialization before it's able to
 complete any tasks, such as establishing a database connection.
@@ -34,7 +34,7 @@ immediately after the worker is created. This is useful for performing
 post-initialization functions that would otherwise block the main thread:
 
 ```
-class ExampleDatabaseWorker < EmWorkerPool::Worker
+class ExampleDatabaseWorker < Thpool::Worker
   def after_initialize
      # Create a database handle.
      @db = DatabaseDriver::Handle.new
@@ -54,7 +54,7 @@ two methods are available. As an example this can be used to record the amount
 of time it took to complete a task:
 
 ```
-class ExampleDatabaseWorker < EmWorkerPool::Worker
+class ExampleDatabaseWorker < Thpool::Worker
   def before_perform(block)
     @start_time = Time.now
   end
@@ -66,13 +66,13 @@ end
 ```
 
 If exceptions are generated within the worker thread either because of
-processing a task or otherwise, these are passed back to the EmWorkerPool
+processing a task or otherwise, these are passed back to the Thpool
 object via the `handle_exception` method. The default behavior is to re-raise
 these, but it's also possible to perform some additional handling here to
 rescue from or ignore them:
 
 ```
-class ExampleDatabasePool < EmWorkerPool
+class ExampleDatabasePool < Thpool
   def handle_exception(worker, exception, block = nil)
     # Pass through to a custom exception logger
     ExceptionHandler.log(exception)

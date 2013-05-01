@@ -1,14 +1,14 @@
 require 'thread'
 
-class EmWorkerPool
+class Thpool
   # == Submodules ===========================================================
 
-  autoload(:Worker, 'em_worker_pool/worker')
+  autoload(:Worker, 'thpool/worker')
 
   # == Constants ============================================================
 
   OPTIONS_DEFAULT = {
-    :worker_class => EmWorkerPool::Worker,
+    :worker_class => Thpool::Worker,
     :workers_min => 0,
     :workers_max => 20,
     :count_per_worker => 1,

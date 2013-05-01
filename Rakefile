@@ -16,11 +16,11 @@ require 'jeweler'
 
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "em-worker-pool"
-  gem.homepage = "http://github.com/twg/em-worker-pool"
+  gem.name = "thpool"
+  gem.homepage = "http://github.com/twg/thpool"
   gem.license = "MIT"
-  gem.summary = %Q{EventMachine Thread Pool/Worker System}
-  gem.description = %Q{Simple thread pool/worker system for EventMachine}
+  gem.summary = %Q{Threaded Pool/Worker System}
+  gem.description = %Q{Simple thread pool/worker system}
   gem.email = "scott@twg.ca"
   gem.authors = [ "Scott Tadman" ]
   # dependencies defined in Gemfile

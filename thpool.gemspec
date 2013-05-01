@@ -4,13 +4,13 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "em-worker-pool"
+  s.name = "thpool"
   s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Scott Tadman"]
-  s.date = "2013-04-30"
-  s.description = "Simple thread pool/worker system for EventMachine"
+  s.date = "2013-05-01"
+  s.description = "Simple thread pool/worker system"
   s.email = "scott@twg.ca"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -23,18 +23,18 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "em-worker-pool.gemspec",
-    "lib/em-worker-pool.rb",
-    "lib/em_worker_pool/worker.rb",
+    "lib/thpool.rb",
+    "lib/thpool/worker.rb",
     "test/helper.rb",
-    "test/unit/test_worker_pool.rb",
-    "test/unit/test_worker_pool_worker.rb"
+    "test/unit/test_thpool.rb",
+    "test/unit/test_thpool_worker.rb",
+    "test/unit/test_worker_pool.rb"
   ]
-  s.homepage = "http://github.com/twg/em-worker-pool"
+  s.homepage = "http://github.com/twg/thpool"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.25"
-  s.summary = "EventMachine Thread Pool/Worker System"
+  s.rubygems_version = "1.8.23"
+  s.summary = "Threaded Pool/Worker System"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

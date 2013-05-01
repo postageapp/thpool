@@ -14,7 +14,7 @@ require 'test/unit'
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require 'em-worker-pool'
+require 'thpool'
 
 class Test::Unit::TestCase
   def assert_eventually(time = nil, message = nil, &block)

@@ -1,4 +1,4 @@
-class EmWorkerPool::Worker
+class Thpool::Worker
   # == Properties ===========================================================
 
   attr_reader :pool
